@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "536344682307",
+    "project_id": "vekfirebase",
+    "storage_bucket": "vekfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536344682307:android:ebcff25ec3ba688a7c19f6",
+        "android_client_info": {
+          "package_name": "com.example.vekfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJq27JYGEgINNrV6XQyvT2oF78j2aR_bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
