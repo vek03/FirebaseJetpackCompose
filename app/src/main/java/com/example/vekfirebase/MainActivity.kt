@@ -1,11 +1,14 @@
+//Vek Histories
 package com.example.vekfirebase
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +17,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.vekfirebase.ui.theme.VekFirebaseTheme
+import com.example.vekfirebase.ui.theme.darkTheme
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
@@ -52,6 +59,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun App(db: FirebaseFirestore) {
@@ -77,7 +85,7 @@ fun App(db: FirebaseFirestore) {
                 .fillMaxWidth(),
             Arrangement.Center
         ) {
-            Text(text = "App Firebase Firestore")
+            Text(text = "VekApp Firebase Firestore")
         }
         Row(
             Modifier
@@ -137,6 +145,11 @@ fun App(db: FirebaseFirestore) {
                     "nome" to nome,
                     "telefone" to telefone
                 )
+
+                if(nome.isEmpty() || telefone.isEmpty()){
+                    Log.w("Erro", "Preencha todos os campos")
+                    return@Button
+                }
                 
                 db.collection("Clientes")
                     .add(pessoa)
